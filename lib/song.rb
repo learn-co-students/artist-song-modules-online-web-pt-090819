@@ -5,13 +5,14 @@ require_relative '../lib/concerns/paramable'
 class Song
   extend Memorable
   include Paramable
+  include Memorable::InstanceMethods
   attr_accessor :name
   attr_reader :artist
 
   @@songs = []
 
   def initialize
-    @@songs << self
+    super
   end
 
   def self.find_by_name(name)
